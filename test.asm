@@ -280,6 +280,13 @@ include irvine32.inc
 
     ;---------------- Octavo ejercicio----------------
    	 cantidadSegundos PROC
+        mov edx, OFFSET horaMsg
+        call WriteString
+        
+        mov edx, OFFSET horaStr
+        call WriteString
+		call Crlf
+
         mov esi, OFFSET horaStr ; Puntero a la cadena de hora
 
         ; Convertir el primer dígito de las horas a segundos (36000 segundos por hora)
@@ -334,6 +341,7 @@ include irvine32.inc
         movzx edx, al        ; Extender el valor a un DWORD
 		add totalSegundos, edx ; Sumar segundos del segundo dígito de los segundos al total de segundos
 
+        ; Mostrar el total de segundos
         mov edx, OFFSET totalSegundosMsg
         call WriteString
         mov eax, totalSegundos
